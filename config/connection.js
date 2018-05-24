@@ -6,10 +6,10 @@ var Sequelize = require("sequelize");
   if (process.env.JAWSDB_URL) {
     var sequelize = new Sequelize(process.env.JAWSDB_URL);
   } else {
-    sequelize = new Sequelize('briefcase_db', 'root', 'Malaya10@', {
+    sequelize = new Sequelize('database name', 'root', 'password', {
       host: 'localhost',
       dialect: 'mysql',
-      port: '3306'
+      port: 'port'
     })
   };
 
