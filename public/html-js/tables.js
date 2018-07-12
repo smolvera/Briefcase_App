@@ -16,7 +16,7 @@ $(document).ready(function () {
     
   
     // add event listener
-    $(document).on("submit", "#addJobForm", addJobOnPage);
+    $(document).on("submit", "#addJobForm", submitNewJob);
   
     // get initial list of jobs already added to database
     getJobs();
@@ -34,16 +34,14 @@ $(document).ready(function () {
       }
       
       // stopped here
-      function upsertJob()
+      function upsertJob() {
         // Send an AJAX POST-request with jQuery
         $.post("/api/addNewJob", addNewJob)
           // On success, run the following code
-          .then(function (data) {
+          .then(function(data) {
             // Log the data we found
             console.log(data);
           });
-  
-      
     }
   
       function createRowsForAddedJob(addNewJobData) {
@@ -59,13 +57,13 @@ $(document).ready(function () {
         return newTr;
       }
   
-      function addJobs() {
+      function getJobs() {
         $.get("/api/addNewJob", function (data) {
           var rowsToAdd = [];
           for (var i = 0; i < data.length; i++) {
             rowsToAdd.push(createRowsForAddedJob(data[i]));
           }
-          renderAuthorList(rowsToAdd);
+          renderJobList(rowsToAdd);
           // Empty each input box by replacing the value with an empty string
           $("#jobTitle").val("");
           $("#companyName").val("");
@@ -75,7 +73,33 @@ $(document).ready(function () {
           $("#salary").val("");
         });
       }
+
+      function renderJobList(rows) {
+        jobWell.children().not(":last").remove();
+        addNewJob.children().not(".alert").remove();
+        if (rows.length) {
+          console.log(rows);
+          jobWell.prepend(rows);
+        } else{
+          renderEmpty();
+        }
+      }
+
+      // may not need function to handle no jobs lister
+      function renderEmpty() {
+        alert("Please enter a new job");
+      }
   
-    });
+      function deleteAddedJob() {
+        var listJobData = $(this).parent("td").parent("tr").data("job");
+        var id = listJobData.id;
+        $.ajax({
+          method: "Delete",
+          url: "api/addNewJob/" + id
+        })
+        .then(getJobs);
+      }
+    }
+  });
   
   
