@@ -18,9 +18,9 @@ Check out the Deployed version: [Briefcase](https://intense-badlands-15017.herok
 
 #### Contributing Team:
 
-* **Samantha Olvera** - Full Stack Developer - [Samantha Olvera](https://github.com/smolvera)
-* **Kim Swope** - Full Stack Developer - [Kim Swope](https://github.com/Southerngirl13)
-* **Shelby Thompson** - Full Stack Developer - 
-* **Kristal Walker** - Full Stack Developer - 
+* **Samantha Olvera** - Back End, SQL Database set - [Samantha Olvera](https://github.com/smolvera)
+* **Kim Swope** - Front End - [Kim Swope](https://github.com/Southerngirl13)
+* **Shelby Thompson** - Passport Oauth - 
+* **Kristal Walker** - Passport Oauth - 
 
 Author: [Samantha Olvera](https://github.com/smolvera)
